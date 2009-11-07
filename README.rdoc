@@ -6,9 +6,20 @@ This is a ruby gem with a bunch of helpers to make Sinatra more useful.
 
 === Environment Tests
 
+Have environment tests like development? and production? available in your app code
+
 === Erb Helpers
 
-=== Mailer
+Helpful view template helpers for partial rendering and html generation.  See
+http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/ for more info.
+
+=== Sprockets
+
+Coming.
+
+=== ActiveRecord
+
+Coming.
 
 == Installation
 
