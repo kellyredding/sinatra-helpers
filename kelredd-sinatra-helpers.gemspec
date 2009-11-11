@@ -2,14 +2,16 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kelredd-sinatra-helpers}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kelly Redding"]
-  s.date = %q{2009-11-07}
+  s.date = %q{2009-11-11}
+  s.default_executable = %q{sinatra}
   s.email = %q{kelly@kelredd.com}
+  s.executables = ["sinatra"]
   s.extra_rdoc_files = ["README.rdoc"]
-  s.files = ["README.rdoc", "Rakefile", "lib/sinatra_helpers", "lib/sinatra_helpers/environment_tests.rb", "lib/sinatra_helpers/erb", "lib/sinatra_helpers/erb/partials.rb", "lib/sinatra_helpers/erb.rb", "lib/sinatra_helpers/version.rb", "lib/sinatra_helpers.rb"]
+  s.files = ["README.rdoc", "Rakefile", "bin/sinatra", "lib/sinatra_helpers", "lib/sinatra_helpers/environment_tests.rb", "lib/sinatra_helpers/erb", "lib/sinatra_helpers/erb/partials.rb", "lib/sinatra_helpers/erb.rb", "lib/sinatra_helpers/generator", "lib/sinatra_helpers/generator/app.rb", "lib/sinatra_helpers/generator/file_templates", "lib/sinatra_helpers/generator/file_templates/app.js.erb", "lib/sinatra_helpers/generator/file_templates/app.rb.erb", "lib/sinatra_helpers/generator/file_templates/app_controller.rb.erb", "lib/sinatra_helpers/generator/file_templates/app_helpers.rb.erb", "lib/sinatra_helpers/generator/file_templates/app_initializer.rb.erb", "lib/sinatra_helpers/generator/file_templates/Capfile.erb", "lib/sinatra_helpers/generator/file_templates/deploy.rb.erb", "lib/sinatra_helpers/generator/file_templates/deploy_live.rb.erb", "lib/sinatra_helpers/generator/file_templates/deploy_staging.rb.erb", "lib/sinatra_helpers/generator/file_templates/gems.rb.erb", "lib/sinatra_helpers/generator/file_templates/index.html.erb", "lib/sinatra_helpers/generator/file_templates/initializers.rb.erb", "lib/sinatra_helpers/generator/file_templates/layout", "lib/sinatra_helpers/generator/file_templates/production.ru.erb", "lib/sinatra_helpers/generator/file_templates/Rakefile.erb", "lib/sinatra_helpers/generator/file_templates/sprockets.yml.erb", "lib/sinatra_helpers/generator/file_templates/web.css.erb", "lib/sinatra_helpers/generator/template.rb", "lib/sinatra_helpers/generator.rb", "lib/sinatra_helpers/version.rb", "lib/sinatra_helpers.rb"]
   s.homepage = %q{http://github.com/kelredd/sinatra-helpers}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
