@@ -1,0 +1,23 @@
+%w(yaml erb rubygems sinatra config/gems).each do |lib|
+  require lib
+end
+Gemsconfig::load
+require 'config/initializers'
+
+set :views, File.join(File.dirname(__FILE__), 'app', 'views')
+
+# Load in helpers
+Dir[File.join(File.dirname(__FILE__), "app/helpers" ,"*.rb")].each do |file|
+  require "app/helpers/#{File.basename(file, ".rb")}"
+end
+
+# Load in models
+Dir[File.join(File.dirname(__FILE__), "app/models" ,"*.rb")].each do |file|
+  require "app/models/#{File.basename(file, ".rb")}"
+end
+
+# Load in controllers
+Dir[File.join(File.dirname(__FILE__), "app/controllers" ,"*.rb")].each do |file|
+  load File.join(File.dirname(__FILE__), 'app/controllers', File.basename(file))
+end
+

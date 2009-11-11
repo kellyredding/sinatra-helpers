@@ -1,0 +1,5 @@
+get %r{/($|index($|.html|.htm))} do
+  headers['Cache-Control'] = 'public, max-age=7200' if production? # rack::cache for 2 hours
+  erb 'app/index.html'.to_sym
+end
+
