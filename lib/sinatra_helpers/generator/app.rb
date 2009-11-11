@@ -37,12 +37,14 @@ module SinatraHelpers::Generator
     def build_template_file(root_path, erb_name, file_name)
       source_file = File.join(File.dirname(__FILE__), "file_templates", erb_name)
       output_file = File.join(root_path, file_name)
-      
-      if ['.erb'].include?(File.extname(source_file))
-        erb = ERB.new(File.read(source_file))
-        File.open(output_file, 'w') {|f| f << erb.result(binding) }
-      else
-        FileUtils.cp(source_file, output_file)
+
+      unless File.exists?(output_file)      
+        if ['.erb'].include?(File.extname(source_file))
+          erb = ERB.new(File.read(source_file))
+          File.open(output_file, 'w') {|f| f << erb.result(binding) }
+        else
+          FileUtils.cp(source_file, output_file)
+        end
       end
     end
 

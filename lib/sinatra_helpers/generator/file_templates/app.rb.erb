@@ -1,10 +1,13 @@
 %w(yaml erb rubygems sinatra config/gems).each do |lib|
   require lib
 end
-Gemsconfig::load
+
+Gemsconfig::load if defined?(Gemsconfig)
 require 'config/initializers'
 
-set :views, File.join(File.dirname(__FILE__), 'app', 'views')
+# TODO: set your session cookie name here
+use Rack::Session::Cookie, :key => '_sess'
+use Rack::Flash
 
 # Load in helpers
 Dir[File.join(File.dirname(__FILE__), "app/helpers" ,"*.rb")].each do |file|
@@ -21,3 +24,4 @@ Dir[File.join(File.dirname(__FILE__), "app/controllers" ,"*.rb")].each do |file|
   load File.join(File.dirname(__FILE__), 'app/controllers', File.basename(file))
 end
 
+set :views, File.join(File.dirname(__FILE__), 'app', 'views')

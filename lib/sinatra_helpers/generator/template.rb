@@ -3,6 +3,14 @@ module SinatraHelpers; end
 module SinatraHelpers::Generator
 
   TEMPLATE = {
+    'app.rb.erb' => 'app.rb',
+    'Capfile.erb' => 'Capfile',
+    'Rakefile.erb' => 'Rakefile',
+    
+    :admin => {
+      'production.ru.erb' => 'production.ru'
+    },
+    
     :app => {
       :controllers => {
         'app_controller.rb.erb' => 'app.rb'
@@ -22,9 +30,34 @@ module SinatraHelpers::Generator
         }
       }
     },
-    'app.rb.erb' => 'app.rb',
-    'Capfile.erb' => 'Capfile',
-    'Rakefile.erb' => 'Rakefile'
+    
+    :config => {
+      :deploy => {
+        'deploy_live.rb.erb' => 'live.rb',
+        'deploy_staging.rb.erb' => 'staging.rb'
+      },
+      'deploy.rb.erb' => 'deploy.rb',
+      'gems.rb.erb' => 'gems.rb',
+      :initializers => {
+        'app_initializer.rb.erb' => 'app.rb'
+      },
+      'initializers.rb.erb' => 'initializers.rb',
+      'sprockets.yml.erb' => 'sprockets.yml'
+    },
+    
+    :log => {},
+    
+    :public => {
+      :images => {},
+      :javascripts => {},
+      :stylesheets => {
+        'web.css.erb' => 'web.css'
+      }
+    },
+    
+    :vendor => {
+      :javascripts => {}
+    }
   }
 
 end

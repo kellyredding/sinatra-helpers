@@ -29,6 +29,10 @@ class GeneratorTest < Test::Unit::TestCase
       end
       
       should_have_files 'app.rb', 'Capfile', 'Rakefile'
+      
+      should_have_directories 'admin'
+      should_have_files       'admin/production.ru'
+      
       should_have_directories 'app'
       should_have_directories 'app/controllers'
       should_have_files       'app/controllers/app.rb'
@@ -43,8 +47,37 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'app/views/app'
       should_have_files       'app/views/app/index.html.erb'
     
-      after do
-        FileUtils.rm_rf(@tmp_dir)
+      should_have_directories 'config'
+      should_have_directories 'config/deploy'
+      should_have_files       'config/deploy/live.rb'
+      should_have_files       'config/deploy/staging.rb'
+      should_have_files       'config/deploy.rb'
+      should_have_files       'config/gems.rb'
+      should_have_directories 'config/initializers'
+      should_have_files       'config/initializers/app.rb'
+      should_have_files       'config/initializers.rb'
+      should_have_files       'config/sprockets.yml'
+
+      should_have_directories 'log'
+
+      should_have_directories 'public'
+      should_have_directories 'public/images'
+      should_have_directories 'public/javascripts'
+      should_have_directories 'public/stylesheets'
+      should_have_files       'public/stylesheets/web.css'
+
+      should_have_directories 'vendor'
+      should_have_directories 'vendor/javascripts'
+      
+      context "when tested and done" do
+        after do
+          FileUtils.rm_rf(@tmp_dir)
+        end
+        
+        should "cleanup after itself" do
+          assert true
+        end
+
       end
 
     end
