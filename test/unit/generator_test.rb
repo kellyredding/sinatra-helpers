@@ -28,7 +28,7 @@ class GeneratorTest < Test::Unit::TestCase
         SinatraHelpers::Generator::App.new(@root_path).generate
       end
       
-      should_have_files 'app.rb', 'Capfile', 'Rakefile'
+      should_have_files 'app.rb', 'Capfile', 'Rakefile', '.gitignore'
       
       should_have_directories 'admin'
       should_have_files       'admin/production.ru'

@@ -6,6 +6,7 @@ module SinatraHelpers::Generator
     'app.rb.erb' => 'app.rb',
     'Capfile.erb' => 'Capfile',
     'Rakefile.erb' => 'Rakefile',
+    'gitignore.erb' => '.gitignore',
     
     :admin => {
       'production.ru.erb' => 'production.ru'
