@@ -14,7 +14,7 @@ spec = Gem::Specification.new do |s|
   s.author           = 'Kelly Redding'
   s.email            = 'kelly@kelredd.com'
   s.homepage         = 'http://github.com/kelredd/sinatra-helpers'
-  s.files            = %w(README.rdoc Rakefile) + Dir.glob("{lib}/**/*")
+  s.files            = %w(README.rdoc Rakefile) + Dir.glob("{bin,lib}/**/*")
   s.executables    = ['sinatra']
   
   s.add_dependency('kelredd-useful', '>= 0.2.0')

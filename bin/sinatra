@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'sinatra_helpers/generator'
+
+if ARGV[0]
+  app_path = ARGV[0].slice(0,1) == File::Separator ? ARGV[0] : File.join(%x{pwd}.strip, ARGV[0])
+  app = SinatraHelpers::Generator::App.new(app_path)
+  app.generate
+else
+  puts "Please specify a name for your gem"
+end
