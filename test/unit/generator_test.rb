@@ -32,6 +32,8 @@ class GeneratorTest < Test::Unit::TestCase
       
       should_have_directories 'admin'
       should_have_files       'admin/production.ru'
+      should_have_directories 'admin/vhosts'
+      should_have_directories 'admin/logrotate'
       
       should_have_directories 'app'
       should_have_directories 'app/controllers'
@@ -64,7 +66,7 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'public/images'
       should_have_directories 'public/javascripts'
       should_have_directories 'public/stylesheets'
-      should_have_files       'public/stylesheets/web.css'
+      should_have_files       'public/stylesheets/reset.css'
 
       should_have_directories 'vendor'
       should_have_directories 'vendor/javascripts'

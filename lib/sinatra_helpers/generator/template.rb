@@ -9,7 +9,9 @@ module SinatraHelpers::Generator
     'gitignore.erb' => '.gitignore',
     
     :admin => {
-      'production.ru.erb' => 'production.ru'
+      'production.ru.erb' => 'production.ru',
+      :vhosts => {},
+      :logrotate => {}
     },
     
     :app => {
@@ -52,7 +54,7 @@ module SinatraHelpers::Generator
       :images => {},
       :javascripts => {},
       :stylesheets => {
-        'web.css.erb' => 'web.css'
+        'reset.css.erb' => 'reset.css'
       }
     },
     
