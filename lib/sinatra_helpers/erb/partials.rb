@@ -22,12 +22,13 @@ module SinatraHelpers::Erb::Partials
     raise 'partial collection specified but is nil' if options.has_key?(:collection) && options[:collection].nil?
     if collection = options.delete(:collection)
       options.delete(:object)  # ignore any object passed in when using :collection
+      options[:locals] ||= {}
       counter = 0
       collection.inject([]) do |buffer, member|
         counter += 1
-        options[:locals] ||= {}
-        options[:locals].merge!({object => member, "#{object}_counter".to_sym => counter})
-        buffer << erb(template, options)
+        erb_opts = options.dup
+        erb_opts[:locals].merge!({object => member, "#{object}_counter".to_sym => counter})
+        buffer << erb(template, erb_opts)
       end.join("\n")
     else
       if member = options.delete(:object)
