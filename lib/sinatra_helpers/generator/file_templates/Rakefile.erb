@@ -1,4 +1,14 @@
 require 'rubygems'
-
-require 'config/gems.rb'
 require 'gemsconfig/tasks/rake'
+require 'rake/testtask'
+
+namespace :test do
+
+  Rake::TestTask.new(:units) do |t|
+    t.libs << "test"
+    t.pattern = 'test/unit/**/*_test.rb'
+    t.verbose = true
+  end
+  Rake::Task['test:units'].comment = "Run the unit tests in test/unit"
+
+end

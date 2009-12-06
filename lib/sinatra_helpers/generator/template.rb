@@ -58,6 +58,13 @@ module SinatraHelpers::Generator
       }
     },
     
+    :test => {
+      'test_helper.rb.erb' => 'test_helper.rb',
+      :unit => {
+        'unit_test.rb.erb' => 'unit_test.rb'
+      }
+    },
+    
     :vendor => {
       :javascripts => {}
     }
