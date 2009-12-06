@@ -58,6 +58,10 @@ module SinatraHelpers::Generator
       }
     },
     
+    :script => {
+      'console.erb' => 'console'
+    },
+    
     :test => {
       'test_helper.rb.erb' => 'test_helper.rb',
       :unit => {
