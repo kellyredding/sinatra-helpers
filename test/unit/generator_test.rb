@@ -1,4 +1,5 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
+require 'sinatra_helpers/generator'
 
 class GeneratorTest < Test::Unit::TestCase
 
