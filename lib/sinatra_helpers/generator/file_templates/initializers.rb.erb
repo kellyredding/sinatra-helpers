@@ -1,6 +1,0 @@
-module Config; end
-module Config::Initializers; end
-
-Dir["config/initializers/*.rb"].each do |file|
-  require "config/initializers/#{File.basename(file, ".rb")}"
-end
