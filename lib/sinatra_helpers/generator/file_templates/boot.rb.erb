@@ -1,0 +1,31 @@
+require 'rubygems'
+require 'yaml'
+require 'sinatra/base'
+ 
+RACK_ENV = ENV["RACK_ENV"] ||= "development" unless defined? RACK_ENV
+ROOT_DIR = File.expand_path("#{File.dirname(__FILE__)}/..") unless defined? ROOT_DIR
+ 
+def root_path(*args)
+  File.join(ROOT_DIR, *args)
+end
+ 
+def public_path(*args)
+  root_path('public', *args)
+end
+ 
+class <%= @class_name %> < Sinatra::Application
+
+  # basic app configurations
+  set :root, root_path
+  set :views, root_path("views")
+  set :images_path, public_path("images")
+  set :environment, RACK_ENV.to_sym if defined?(RACK_ENV)
+
+  # setup configured gems
+  Gemsconfig::load if defined?(Gemsconfig)
+
+  # TODO: set your session cookie name here
+  use Rack::Session::Cookie, :key => '_sess'
+  use Rack::Flash
+
+end

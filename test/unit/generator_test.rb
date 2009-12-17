@@ -36,42 +36,28 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'admin/vhosts'
       should_have_directories 'admin/logrotate'
       
-      should_have_directories 'app'
-      should_have_directories 'app/controllers'
-      should_have_files       'app/controllers/app.rb'
-      should_have_directories 'app/helpers'
-      should_have_files       'app/helpers/app_helpers.rb'
-      should_have_directories 'app/javascripts'
-      should_have_files       'app/javascripts/app.js'
-      should_have_directories 'app/models'
-      should_have_directories 'app/stylesheets'
-      should_have_directories 'app/views'
-      should_have_files       'app/views/layout.erb'
-      should_have_directories 'app/views/app'
-      should_have_files       'app/views/app/index.html.erb'
+      should_have_directories 'javascripts'
+      should_have_files       'javascripts/app.js'
+      should_have_directories 'models'
+      should_have_directories 'stylesheets'
+      should_have_files       'stylesheets/reset.less'
+      should_have_directories 'views'
+      should_have_files       'views/layout.erb'
     
       should_have_directories 'config'
-      should_have_directories 'config/deploy'
-      should_have_files       'config/deploy/live.rb'
-      should_have_files       'config/deploy/staging.rb'
+      should_have_files       'config/boot.rb'
       should_have_files       'config/deploy.rb'
+      should_have_directories 'config/deploy'
+      should_have_files       'config/deploy/production.rb'
+      should_have_files       'config/deploy/staging.rb'
       should_have_files       'config/gems.rb'
-      should_have_directories 'config/initializers'
-      should_have_files       'config/initializers/app.rb'
-      should_have_files       'config/initializers.rb'
       should_have_files       'config/sprockets.yml'
 
       should_have_directories 'log'
 
       should_have_directories 'public'
       should_have_directories 'public/images'
-      should_have_directories 'public/javascripts'
-      should_have_directories 'public/stylesheets'
-      should_have_files       'public/stylesheets/reset.css'
 
-      should_have_directories 'vendor'
-      should_have_directories 'vendor/javascripts'
-      
       context "when tested and done" do
         after do
           FileUtils.rm_rf(@tmp_dir)

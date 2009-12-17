@@ -1,4 +1,5 @@
 require 'erb'
+require 'useful/ruby_extensions/string'
 
 module SinatraHelpers; end
 
@@ -11,6 +12,7 @@ module SinatraHelpers::Generator
     def initialize(path)
       @root_path = File.dirname(path)
       self.name = File.basename(path)
+      @class_name = @name.classify
     end
     
     def name=(name)

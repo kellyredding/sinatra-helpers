@@ -14,37 +14,26 @@ module SinatraHelpers::Generator
       :logrotate => {}
     },
     
-    :app => {
-      :controllers => {
-        'app_controller.rb.erb' => 'app.rb'
-      },
-      :helpers => {
-        'app_helpers.rb.erb' => 'app_helpers.rb'
-      },
-      :javascripts => {
-        'app.js.erb' => 'app.js'
-      },
-      :models => {},
-      :stylesheets => {},
-      :views => {
-        'layout' => 'layout.erb',
-        :app => {
-          'index.html.erb' => 'index.html.erb'
-        }
-      }
+    :javascripts => {
+      'app.js.erb' => 'app.js'
+    },
+    :models => {},
+    :stylesheets => {
+      'reset.less.erb' => 'reset.less',
+      'web.less.erb' => 'web.less'
+    },
+    :views => {
+      'layout' => 'layout.erb'
     },
     
     :config => {
+      'boot.rb.erb' => 'boot.rb',
       :deploy => {
-        'deploy_live.rb.erb' => 'live.rb',
+        'deploy_production.rb.erb' => 'production.rb',
         'deploy_staging.rb.erb' => 'staging.rb'
       },
       'deploy.rb.erb' => 'deploy.rb',
       'gems.rb.erb' => 'gems.rb',
-      :initializers => {
-        'app_initializer.rb.erb' => 'app.rb'
-      },
-      'initializers.rb.erb' => 'initializers.rb',
       'sprockets.yml.erb' => 'sprockets.yml'
     },
     
@@ -52,10 +41,6 @@ module SinatraHelpers::Generator
     
     :public => {
       :images => {},
-      :javascripts => {},
-      :stylesheets => {
-        'reset.css.erb' => 'reset.css'
-      }
     },
     
     :script => {
@@ -67,11 +52,8 @@ module SinatraHelpers::Generator
       :unit => {
         'unit_test.rb.erb' => 'unit_test.rb'
       }
-    },
-    
-    :vendor => {
-      :javascripts => {}
     }
+    
   }
 
 end
