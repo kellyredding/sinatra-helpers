@@ -41,8 +41,10 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'app/models'
       should_have_directories 'app/stylesheets'
       should_have_files       'app/stylesheets/reset.less'
+      should_have_files       'app/stylesheets/app.less'
       should_have_directories 'app/views'
       should_have_files       'app/views/layout.erb'
+      should_have_files       'app/views/index.html.erb'
     
       should_have_directories 'config'
       should_have_files       'config/boot.rb'

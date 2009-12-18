@@ -5,5 +5,5 @@ require 'config/boot'
 # define routes here or load in route definitions
 
 get '/' do
-  "hello from <%= @class_name %>!"
+  erb :'index.html'
 end

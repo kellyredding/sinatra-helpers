@@ -21,10 +21,11 @@ module SinatraHelpers::Generator
       :models => {},
       :stylesheets => {
         'reset.less.erb' => 'reset.less',
-        'web.less.erb' => 'web.less'
+        'app.less.erb' => 'app.less'
       },
       :views => {
-        'layout' => 'layout.erb'
+        'layout' => 'layout.erb',
+        'index.html.erb.erb' => 'index.html.erb'
       },
     },
     
