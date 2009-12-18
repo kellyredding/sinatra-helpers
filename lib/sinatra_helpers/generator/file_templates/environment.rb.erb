@@ -11,4 +11,4 @@ set :environment, RACK_ENV.to_sym if defined?(RACK_ENV)
 use Rack::Session::Cookie, :key => '_sess'
 use Rack::Flash
 
-register SinatraHelpers::Less
+Sinatra::Application.register SinatraHelpers::Less

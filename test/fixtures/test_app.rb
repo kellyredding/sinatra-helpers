@@ -1,7 +1,7 @@
 require 'sinatra/base'
 require 'sinatra_helpers/less'
  
-class LessApp < Sinatra::Base
+class TestApp < Sinatra::Base
   
   configure do
     set :root, File.expand_path(File.dirname(__FILE__))

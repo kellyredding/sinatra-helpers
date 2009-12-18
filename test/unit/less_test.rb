@@ -1,10 +1,10 @@
 require'test_helper'
-require 'fixtures/less_app'
+require 'fixtures/test_app'
 
 class LessTest < Test::Unit::TestCase
 
   def app
-    @app ||= LessApp
+    @app ||= TestApp
   end
 
   context "A SinatraHelpers::Less app" do

@@ -10,7 +10,7 @@ module SinatraHelpers::Less
   
   CONFIG_DEFAULTS = {
     :hosted_path => '/stylesheets',
-    :src_path => 'stylesheets',
+    :src_path => 'app/stylesheets',
     :cache_name => 'all',
     :stylesheets => []
   }
