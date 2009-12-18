@@ -5,7 +5,8 @@ rescue LoadError => err
   raise err
 end
 
-module LessSinatra
+module SinatraHelpers; end
+module SinatraHelpers::Less
   
   CONFIG_DEFAULTS = {
     :hosted_path => '/stylesheets',
@@ -29,21 +30,21 @@ module LessSinatra
   
     def registered(app)
       instance_variable_set("@app", app)
-      app.get "#{LessSinatra[:hosted_path]}/*.css" do
+      app.get "#{SinatraHelpers::Less[:hosted_path]}/*.css" do
         css_name = params['splat'].first.to_s
         less_path = File.join([
-          app.root, LessSinatra[:src_path], "#{css_name}.less"
+          app.root, SinatraHelpers::Less[:src_path], "#{css_name}.less"
         ])
         content_type :css
         if File.exists?(less_path)
-          LessSinatra.compile(css_name, [less_path])
-        elsif LessSinatra[:cache_name] && css_name == LessSinatra[:cache_name]
-          less_paths = LessSinatra[:stylesheets].collect do |css_name|
-            File.join(app.root, LessSinatra[:src_path], "#{css_name}.less")
+          SinatraHelpers::Less.compile(css_name, [less_path])
+        elsif SinatraHelpers::Less[:cache_name] && css_name == SinatraHelpers::Less[:cache_name]
+          less_paths = SinatraHelpers::Less[:stylesheets].collect do |css_name|
+            File.join(app.root, SinatraHelpers::Less[:src_path], "#{css_name}.less")
           end.select do |less_path|
             File.exists?(less_path)
           end
-          LessSinatra.compile(css_name, less_paths)
+          SinatraHelpers::Less.compile(css_name, less_paths)
         else
           halt HTTP_STATUS[:not_found]
         end
@@ -63,7 +64,7 @@ module LessSinatra
         Less::Engine.new(File.new(file_path)).to_css
       end.join("\n")
       if page_cache?
-        pub_path = File.join(LessSinatra.app.public, LessSinatra[:hosted_path])
+        pub_path = File.join(SinatraHelpers::Less.app.public, SinatraHelpers::Less[:hosted_path])
         FileUtils.mkdir_p(pub_path)
         hosted = File.join(pub_path, "#{css_name}.css")
         File.open(hosted, "w") do |file|

@@ -10,3 +10,5 @@ set :environment, RACK_ENV.to_sym if defined?(RACK_ENV)
 # TODO: set your session cookie name here
 use Rack::Session::Cookie, :key => '_sess'
 use Rack::Flash
+
+register SinatraHelpers::Less
