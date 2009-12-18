@@ -1,7 +1,9 @@
+require 'rubygems'
+require 'sinatra'
 require 'config/boot'
 
-class <%= @class_name %> < Sinatra::Application
+# define routes here or load in route definitions
 
-  # TODO: define route handlers here
-
+get '/' do
+  "hello from <%= @class_name %>!"
 end

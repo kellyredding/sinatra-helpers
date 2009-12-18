@@ -7,5 +7,5 @@ if ARGV[0]
   app = SinatraHelpers::Generator::App.new(app_path)
   app.generate
 else
-  puts "Please specify a name for your gem"
+  puts "Please specify a name for your sinatra app"
 end

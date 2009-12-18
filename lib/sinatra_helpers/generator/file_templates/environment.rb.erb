@@ -1,0 +1,12 @@
+require 'config/gems'
+Gemsconfig::load if defined?(Gemsconfig)
+
+# basic app configurations
+set :root, root_path
+set :views, root_path("app", "views")
+set :images_path, public_path("images")
+set :environment, RACK_ENV.to_sym if defined?(RACK_ENV)
+
+# TODO: set your session cookie name here
+use Rack::Session::Cookie, :key => '_sess'
+use Rack::Flash

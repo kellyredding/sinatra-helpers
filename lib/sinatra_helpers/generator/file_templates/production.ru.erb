@@ -1,24 +1,6 @@
-FileUtils.mkdir_p 'log' unless File.exists?('log')
-log = File.new("log/production.log", "a+")
-$stdout.reopen(log)
-$stderr.reopen(log)
-
-require 'rubygems'
-require 'sinatra'
+RACK_ENV = ENV["RACK_ENV"] ||= "production" unless defined? RACK_ENV
 require 'app'
- 
-root_dir = File.dirname(__FILE__)
-
-set :root, root_dir
-set :app_file, File.join(root_dir, 'app.rb')
-set :environment, :production
+set :app_file, File.join(root_path, 'app.rb')
 disable :run
-
-require 'rack/cache'
-
-use Rack::Cache,
-  :verbose     => true,
-  :metastore   => "file:#{File.join(root_dir, 'cache-rack', 'meta')}",
-  :entitystore => "file:#{File.join(root_dir, 'cache-rack', 'body')}"
 
 run Sinatra::Application
