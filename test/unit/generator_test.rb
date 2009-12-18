@@ -65,6 +65,12 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'public'
       should_have_directories 'public/images'
 
+      should_have_directories 'test'
+      should_have_directories 'test/functional'
+      should_have_files       'test/functional/app_test.rb'
+      should_have_directories 'test/unit'
+      should_have_files       'test/unit/model_test.rb'
+
       context "when tested and done" do
         after do
           FileUtils.rm_rf(@tmp_dir)

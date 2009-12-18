@@ -1,4 +1,4 @@
-require'test_helper'
+require 'test_helper'
 require 'fixtures/test_app'
 
 class LessTest < Test::Unit::TestCase

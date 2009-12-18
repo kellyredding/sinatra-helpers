@@ -1,0 +1,18 @@
+require 'test_helper'
+
+class AppTest < Test::Unit::TestCase
+
+  def app
+    Sinatra::Application
+  end
+
+  context "The app" do
+  
+    should "say hello" do
+      visit '/'
+      assert_contain "Hello from <%= @class_name %>!"
+    end
+    
+  end
+
+end
