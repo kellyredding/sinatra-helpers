@@ -61,6 +61,9 @@ module SinatraHelpers::Less
         less_path = File.join([
           app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less"
         ])
+        css_path = File.join([
+          app.root, SinatraHelpers::Less[:src_root], "#{css_name}.css"
+        ])
 
         content_type CONTENT_TYPE
         if SinatraHelpers.page_cache?(SinatraHelpers::Less.app)
@@ -69,6 +72,8 @@ module SinatraHelpers::Less
 
         if File.exists?(less_path)
           SinatraHelpers::Less.compile(css_name, [less_path])
+        elsif File.exists?(css_path)
+          SinatraHelpers::Less.compile(css_name, [css_path])
         elsif SinatraHelpers::Less[:cache_name] && css_name == SinatraHelpers::Less[:cache_name]
           less_paths = SinatraHelpers::Less[:stylesheets].collect do |css_name|
             File.join(app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less")

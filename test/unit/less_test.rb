@@ -71,7 +71,7 @@ class LessTest < Test::Unit::TestCase
     
     context "when requesting a stylesheet not needing to be compiled" do
       setup do
-        @normal = File.open(File.join(app.root, SinatraHelpers::Less[:src_root], 'normal.css')) do |file|
+        @normal = File.open(File.join(app.root, SinatraHelpers::Less[:src_root], 'normal_compiled.css')) do |file|
           file.read
         end
         @response = visit "#{SinatraHelpers::Less[:hosted_root]}/normal.css"
@@ -82,13 +82,26 @@ class LessTest < Test::Unit::TestCase
       end
     end
     
+    context "when requesting a non LESS stylesheet" do
+      setup do
+        @just = File.open(File.join(app.root, SinatraHelpers::Less[:src_root], 'just.css')) do |file|
+          file.read
+        end
+        @response = visit "#{SinatraHelpers::Less[:hosted_root]}/just.css"
+      end
+      
+      should "return just the CSS" do
+        assert_equal @just.strip, @response.body.strip
+      end
+    end
+    
     context "when requesting many stylesheets needing to be compiled into one" do
       setup do
         SinatraHelpers::Less.config do |config|
           config.stylesheets = @the_stylesheets = ['one', 'two']
           config.cache_name = @the_cache_name = 'all'
         end
-        @all = File.open(File.join(app.root, SinatraHelpers::Less[:src_root], 'all.css')) do |file|
+        @all = File.open(File.join(app.root, SinatraHelpers::Less[:src_root], 'all_compiled.css')) do |file|
           file.read
         end
         @response = visit "#{SinatraHelpers::Less[:hosted_root]}/all.css"
