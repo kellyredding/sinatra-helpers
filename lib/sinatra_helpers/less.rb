@@ -8,63 +8,79 @@ end
 module SinatraHelpers; end
 module SinatraHelpers::Less
   
-  CONFIG_DEFAULTS = {
-    :hosted_path => '/stylesheets',
-    :src_path => 'app/stylesheets',
-    :cache_name => 'all',
-    :stylesheets => []
-  }
+  CONTENT_TYPE = "text/css"
   
-  HTTP_STATUS = {
-    :not_found => 404,
-    :ok => 200
-  }
+  class Config
+    ATTRIBUTES = [:hosted_root, :src_root, :stylesheets, :cache_name]
+    DEFAULTS = {
+      :hosted_root => '/stylesheets',
+      :src_root => 'app/stylesheets',
+      :cache_name => 'all',
+      :stylesheets => []
+    }
+
+    attr_accessor *ATTRIBUTES
+    
+    def initialize(args={})
+      ATTRIBUTES.each do |a|
+        instance_variable_set("@#{a}", args[a] || DEFAULTS[a])
+      end
+    end
+  end
 
   class << self
     attr_reader :app
-    attr_accessor :hosted_path, :src_path, :stylesheets, :cache_name
     
-    def [](config)
-      instance_variable_get("@#{config}") || CONFIG_DEFAULTS[config]
+    def config
+      if instance_variable_get("@config").nil?
+        instance_variable_set("@config", SinatraHelpers::Less::Config.new)
+      end
+      yield instance_variable_get("@config") if block_given?
+      instance_variable_get("@config")
+    end
+    
+    def [](config_attribute)
+      config.send(config_attribute)
     end
   
     def registered(app)
       instance_variable_set("@app", app)
-      app.get "#{SinatraHelpers::Less[:hosted_path]}/*.css" do
+
+      app.get "/less-sinatra-helper-test" do
+        if SinatraHelpers::Less.config
+          "The LESS sinatra helper is configured and ready :)"
+        else
+          "The LESS sinatra helper is NOT configured and ready :("
+        end
+      end
+
+      app.get "#{SinatraHelpers::Less[:hosted_root]}/*.css" do
         css_name = params['splat'].first.to_s
         less_path = File.join([
-          app.root, SinatraHelpers::Less[:src_path], "#{css_name}.less"
+          app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less"
         ])
-        content_type :css
+        content_type CONTENT_TYPE
         if File.exists?(less_path)
           SinatraHelpers::Less.compile(css_name, [less_path])
         elsif SinatraHelpers::Less[:cache_name] && css_name == SinatraHelpers::Less[:cache_name]
           less_paths = SinatraHelpers::Less[:stylesheets].collect do |css_name|
-            File.join(app.root, SinatraHelpers::Less[:src_path], "#{css_name}.less")
+            File.join(app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less")
           end.select do |less_path|
             File.exists?(less_path)
           end
           SinatraHelpers::Less.compile(css_name, less_paths)
         else
-          halt HTTP_STATUS[:not_found]
+          halt SinatraHelpers::HTTP_STATUS[:not_found]
         end
       end    
-    end
-    
-    def page_cache?
-      if defined?(Rails)
-        Rails.configuration.action_controller.perform_caching
-      else
-        app.environment == 'production'
-      end
     end
     
     def compile(css_name, file_paths)
       compiled_less = file_paths.collect do |file_path|
         Less::Engine.new(File.new(file_path)).to_css
       end.join("\n")
-      if page_cache?
-        pub_path = File.join(SinatraHelpers::Less.app.public, SinatraHelpers::Less[:hosted_path])
+      if SinatraHelpers.page_cache?(SinatraHelpers::Less.app)
+        pub_path = File.join(SinatraHelpers::Less.app.public, SinatraHelpers::Less[:hosted_root])
         FileUtils.mkdir_p(pub_path)
         hosted = File.join(pub_path, "#{css_name}.css")
         File.open(hosted, "w") do |file|
