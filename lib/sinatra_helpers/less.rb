@@ -1,7 +1,7 @@
 begin
   require 'less'
 rescue LoadError => err
-  err.message << "\n**** Install less (sudo gem install less) to use the sinatra less helper ****\n"
+  err.message << "\n**** Install less (gem install less) to use the sinatra less helpers ****\n"
   raise err
 end
 
