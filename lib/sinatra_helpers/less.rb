@@ -9,14 +9,16 @@ module SinatraHelpers; end
 module SinatraHelpers::Less
   
   CONTENT_TYPE = "text/css"
+  DEFAULT_CACHE_CONTROL = 'public, max-age=86400' # cache for 24 hours
   
   class Config
-    ATTRIBUTES = [:hosted_root, :src_root, :stylesheets, :cache_name]
+    ATTRIBUTES = [:hosted_root, :src_root, :stylesheets, :cache_name, :cache_control]
     DEFAULTS = {
       :hosted_root => '/stylesheets',
       :src_root => 'app/stylesheets',
       :cache_name => 'all',
-      :stylesheets => []
+      :stylesheets => [],
+      :cache_control => DEFAULT_CACHE_CONTROL
     }
 
     attr_accessor *ATTRIBUTES
@@ -59,7 +61,12 @@ module SinatraHelpers::Less
         less_path = File.join([
           app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less"
         ])
+
         content_type CONTENT_TYPE
+        if SinatraHelpers.page_cache?(SinatraHelpers::Less.app)
+          headers['Cache-Control'] = SinatraHelpers::Less[:cache_control]
+        end
+
         if File.exists?(less_path)
           SinatraHelpers::Less.compile(css_name, [less_path])
         elsif SinatraHelpers::Less[:cache_name] && css_name == SinatraHelpers::Less[:cache_name]

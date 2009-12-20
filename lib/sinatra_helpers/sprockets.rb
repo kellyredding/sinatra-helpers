@@ -74,11 +74,13 @@ module SinatraHelpers::Sprockets
           SinatraHelpers::Sprockets[:src_root], "#{src_name}.js"
         ])
         src_path = File.join(app.root, src_file_path)
+
         content_type CONTENT_TYPE
+        if SinatraHelpers.page_cache?(SinatraHelpers::Sprockets.app)
+          headers['Cache-Control'] = SinatraHelpers::Sprockets[:cache_control]
+        end
+
         if File.exists?(src_path)
-          if SinatraHelpers.page_cache?(SinatraHelpers::Sprockets.app)
-            headers['Cache-Control'] = SinatraHelpers::Sprockets[:cache_control]
-          end
           SinatraHelpers::Sprockets.compile(src_file_path)
         else
           halt SinatraHelpers::HTTP_STATUS[:not_found]
