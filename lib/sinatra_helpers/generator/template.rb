@@ -42,8 +42,7 @@ module SinatraHelpers::Generator
         'environment_test.rb.erb' => 'test.rb',
         'environment_production.rb.erb' => 'production.rb'
       },
-      'gems.rb.erb' => 'gems.rb',
-      'sprockets.yml.erb' => 'sprockets.yml'
+      'gems.rb.erb' => 'gems.rb'
     },
     
     :log => {},

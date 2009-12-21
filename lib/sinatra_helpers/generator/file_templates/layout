@@ -11,9 +11,9 @@
     <meta name="robots" content="noindex,nofollow" />
   <% end %>
   <link rel="icon" type="image/png" href="/favicon.png"></link>
-  <%= stylesheet_link_tag SinatraHelpers::Less.stylesheets, :cache => SinatraHelpers::Less.cache_name, :media => "all" %>
+  <%= stylesheet_link_tag SinatraHelpers::Less[:stylesheets], :cache => SinatraHelpers::Less[:cache_name], :media => "all" %>
 	<% unless @noscript %>
-	  <% #= sprockets_include_tag %>
+	  <%= javascript_include_tag 'app.js' %>
   <% end %>
 </head>
 <body class="body">
