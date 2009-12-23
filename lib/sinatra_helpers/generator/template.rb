@@ -52,7 +52,8 @@ module SinatraHelpers::Generator
     },
     
     :script => {
-      'console.erb' => 'console'
+      'console.erb' => 'console',
+      'server.erb' => 'server'
     },
     
     :test => {
