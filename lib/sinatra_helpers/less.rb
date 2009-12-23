@@ -12,13 +12,14 @@ module SinatraHelpers::Less
   DEFAULT_CACHE_CONTROL = 'public, max-age=86400' # cache for 24 hours
   
   class Config
-    ATTRIBUTES = [:hosted_root, :src_root, :stylesheets, :cache_name, :cache_control]
+    ATTRIBUTES = [:hosted_root, :src_root, :stylesheets, :cache_name, :cache_control, :compression]
     DEFAULTS = {
       :hosted_root => '/stylesheets',
       :src_root => 'app/stylesheets',
       :cache_name => 'all',
       :stylesheets => [],
-      :cache_control => DEFAULT_CACHE_CONTROL
+      :cache_control => DEFAULT_CACHE_CONTROL,
+      :compression => false
     }
 
     attr_accessor *ATTRIBUTES
@@ -91,6 +92,7 @@ module SinatraHelpers::Less
       compiled_less = file_paths.collect do |file_path|
         Less::Engine.new(File.new(file_path)).to_css
       end.join("\n")
+      compiled_less.delete!("\n") if use_compression?
       if SinatraHelpers.page_cache?(SinatraHelpers::Less.app)
         pub_path = File.join(SinatraHelpers::Less.app.public, SinatraHelpers::Less[:hosted_root])
         FileUtils.mkdir_p(pub_path)
@@ -100,6 +102,10 @@ module SinatraHelpers::Less
         end
       end
       compiled_less
+    end
+    
+    def use_compression?
+      SinatraHelpers::Less[:compression]
     end
 
   end

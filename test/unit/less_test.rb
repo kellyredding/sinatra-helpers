@@ -10,6 +10,9 @@ class LessTest < Test::Unit::TestCase
   context "A SinatraHelpers::Less app" do
     setup do
       app.set :environment, :development
+      SinatraHelpers::Less.config do |config|
+        config.compression = false
+      end
     end
 
     context "in testing" do
@@ -48,9 +51,13 @@ class LessTest < Test::Unit::TestCase
         assert_equal @compiled.strip, @response.body.strip
       end
       
-      context "in production" do
+      context "in production with compression" do
         setup do
           app.set :environment, "production"
+          SinatraHelpers::Less.config do |config|
+            config.compression = true
+          end
+          
           @response = visit "#{SinatraHelpers::Less[:hosted_root]}/#{@css_name}"
         end
 
@@ -63,7 +70,7 @@ class LessTest < Test::Unit::TestCase
           cached_compiled = File.open(cached_file) do |file|
             file.read
           end
-          assert_equal @compiled.strip, cached_compiled.strip
+          assert_equal @compiled.strip.delete!("\n"), cached_compiled.strip
         end
       end
       
