@@ -6,7 +6,6 @@ rescue LoadError => err
 end
 
 require 'sinatra_helpers/less/config'
-require 'sinatra_helpers/less/erb'
 
 module SinatraHelpers; end
 module SinatraHelpers::Less
@@ -29,7 +28,6 @@ module SinatraHelpers::Less
     end
   
     def registered(app)
-      app.helpers SinatraHelpers::Less::Erb
       instance_variable_set("@app", app)
 
       app.get "/less-sinatra-helper-test" do

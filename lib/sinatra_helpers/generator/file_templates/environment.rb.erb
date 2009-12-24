@@ -13,6 +13,10 @@ use Rack::Flash
 
 # setup the LESS helper
 Sinatra::Application.register SinatraHelpers::Less
+require 'sinatra_helpers/less/erb'
+Sinatra::Application.helpers SinatraHelpers::Less::Erb
 
 # setup the Sprockets helper
 Sinatra::Application.register SinatraHelpers::Sprockets
+require 'sinatra_helpers/sprockets/erb'
+Sinatra::Application.helpers SinatraHelpers::Sprockets::Erb
