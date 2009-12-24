@@ -88,7 +88,7 @@ module SinatraHelpers::Less
     end
     
     def use_compression?
-      SinatraHelpers::Less[:compression]
+      SinatraHelpers::Less[:compress]
     end
 
   end

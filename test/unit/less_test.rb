@@ -11,7 +11,7 @@ class LessTest < Test::Unit::TestCase
     setup do
       app.set :environment, :development
       SinatraHelpers::Less.config do |config|
-        config.compression = false
+        config.compress = false
       end
     end
 
@@ -55,7 +55,7 @@ class LessTest < Test::Unit::TestCase
         setup do
           app.set :environment, "production"
           SinatraHelpers::Less.config do |config|
-            config.compression = true
+            config.compress = true
           end
           
           @response = visit "#{SinatraHelpers::Less[:hosted_root]}/#{@css_name}"

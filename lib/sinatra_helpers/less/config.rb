@@ -2,13 +2,13 @@ module SinatraHelpers; end
 module SinatraHelpers::Less
 
   class Config
-    ATTRIBUTES = [:hosted_root, :src_root, :concat, :cache_control, :compression]
+    ATTRIBUTES = [:hosted_root, :src_root, :concat, :cache_control, :compress]
     DEFAULTS = {
       :hosted_root => '/stylesheets',
       :src_root => 'app/stylesheets',
       :concat => {},
       :cache_control => SinatraHelpers::DEFAULT_CACHE_CONTROL,
-      :compression => false
+      :compress => false
     }
 
     attr_accessor *ATTRIBUTES
