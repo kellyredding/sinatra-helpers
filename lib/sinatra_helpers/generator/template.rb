@@ -36,11 +36,11 @@ module SinatraHelpers::Generator
         'deploy_production.rb.erb' => 'production.rb',
         'deploy_staging.rb.erb' => 'staging.rb'
       },
-      'environment.rb.erb' => 'environment.rb',
-      :environments => {
-        'environment_development.rb.erb' => 'development.rb',
-        'environment_test.rb.erb' => 'test.rb',
-        'environment_production.rb.erb' => 'production.rb'
+      'env.rb.erb' => 'env.rb',
+      :envs => {
+        'env_development.rb.erb' => 'development.rb',
+        'env_test.rb.erb' => 'test.rb',
+        'env_production.rb.erb' => 'production.rb'
       },
       'gems.rb.erb' => 'gems.rb'
     },
