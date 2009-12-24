@@ -9,9 +9,9 @@ def public_path(*args)
   root_path('public', *args)
 end
 
+require 'config/env'
 begin
-  require "config/environments/#{RACK_ENV.downcase}"
+  require "config/envs/#{RACK_ENV.downcase}"
 rescue LoadError => err
   puts "no environment config set up for '#{RACK_ENV.downcase}', ignoring..."
 end
-require 'config/environment'

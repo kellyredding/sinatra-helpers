@@ -39,30 +39,27 @@ module SinatraHelpers::Less
       end
 
       app.get "#{SinatraHelpers::Less[:hosted_root]}/*.css" do
-        css_name = params['splat'].first.to_s
+        file_name = params['splat'].first.to_s
         less_path = File.join([
-          app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less"
+          app.root, SinatraHelpers::Less[:src_root], "#{file_name}.less"
         ])
         css_path = File.join([
-          app.root, SinatraHelpers::Less[:src_root], "#{css_name}.css"
+          app.root, SinatraHelpers::Less[:src_root], "#{file_name}.css"
         ])
 
         content_type CONTENT_TYPE
-        if SinatraHelpers.page_cache?(SinatraHelpers::Less.app)
-          headers['Cache-Control'] = SinatraHelpers::Less[:cache_control]
-        end
 
         if File.exists?(less_path)
-          SinatraHelpers::Less.compile(css_name, [less_path])
+          SinatraHelpers::Less.compile(file_name, [less_path])
         elsif File.exists?(css_path)
-          SinatraHelpers::Less.compile(css_name, [css_path])
-        elsif SinatraHelpers::Less[:concat].include?(css_name)
-          less_paths = SinatraHelpers::Less[:concat][css_name].collect do |css_name|
-            File.join(app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less")
+          SinatraHelpers::Less.compile(file_name, [css_path])
+        elsif SinatraHelpers::Less[:concat].include?(file_name)
+          less_paths = SinatraHelpers::Less[:concat][file_name].collect do |concat_name|
+            File.join(app.root, SinatraHelpers::Less[:src_root], "#{concat_name}.less")
           end.select do |less_path|
             File.exists?(less_path)
           end
-          SinatraHelpers::Less.compile(css_name, less_paths)
+          SinatraHelpers::Less.compile(file_name, less_paths)
         else
           halt SinatraHelpers::HTTP_STATUS[:not_found]
         end

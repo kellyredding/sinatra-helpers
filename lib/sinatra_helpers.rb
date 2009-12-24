@@ -7,7 +7,6 @@ module SinatraHelpers
     :not_found => 404,
     :ok => 200
   }
-  DEFAULT_CACHE_CONTROL = 'public, max-age=86400' # cache for 24 hours
 
   class << self
     
@@ -15,7 +14,7 @@ module SinatraHelpers
       if defined?(Rails)
         Rails.configuration.action_controller.perform_caching
       elsif app.respond_to?(:environment)
-        app.environment == 'production'
+        app.environment.to_s == 'production'
       else
         false
       end

@@ -62,7 +62,6 @@ class LessTest < Test::Unit::TestCase
         end
 
         should "page cache the compiled css to a public file" do
-          assert_equal SinatraHelpers::DEFAULT_CACHE_CONTROL, @response.headers['Cache-Control']
           pub_path = File.join(app.public, SinatraHelpers::Less[:hosted_root])
           assert File.exists?(pub_path)
           cached_file = File.join(pub_path, @css_name)

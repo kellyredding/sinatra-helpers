@@ -58,9 +58,6 @@ module SinatraHelpers::Sprockets
         src_path = File.join(app.root, src_file_path)
 
         content_type CONTENT_TYPE
-        if SinatraHelpers.page_cache?(SinatraHelpers::Sprockets.app)
-          headers['Cache-Control'] = SinatraHelpers::Sprockets[:cache_control]
-        end
 
         if File.exists?(src_path)
           SinatraHelpers::Sprockets.compile(src_file_path)
