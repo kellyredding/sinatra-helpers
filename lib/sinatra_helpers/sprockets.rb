@@ -9,7 +9,6 @@ module SinatraHelpers; end
 module SinatraHelpers::Sprockets
   
   CONTENT_TYPE = "text/javascript; charset=utf-8"
-  DEFAULT_CACHE_CONTROL = 'public, max-age=86400' # cache for 24 hours
 
   class Config
     ATTRIBUTES = [:hosted_root, :src_root, :load_path, :expand_paths, :cache_control]
@@ -18,7 +17,7 @@ module SinatraHelpers::Sprockets
       :src_root => 'app/javascripts',
       :load_path => ['app/javascripts/sprockets', 'vendor/javascripts', 'vendor/sprockets'],
       :expand_paths => true,
-      :cache_control => DEFAULT_CACHE_CONTROL
+      :cache_control => SinatraHelpers::DEFAULT_CACHE_CONTROL
     }
 
     attr_accessor *ATTRIBUTES

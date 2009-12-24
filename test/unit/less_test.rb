@@ -62,7 +62,7 @@ class LessTest < Test::Unit::TestCase
         end
 
         should "page cache the compiled css to a public file" do
-          assert_equal SinatraHelpers::Less::DEFAULT_CACHE_CONTROL, @response.headers['Cache-Control']
+          assert_equal SinatraHelpers::DEFAULT_CACHE_CONTROL, @response.headers['Cache-Control']
           pub_path = File.join(app.public, SinatraHelpers::Less[:hosted_root])
           assert File.exists?(pub_path)
           cached_file = File.join(pub_path, @css_name)
@@ -102,11 +102,10 @@ class LessTest < Test::Unit::TestCase
       end
     end
     
-    context "when requesting many stylesheets needing to be compiled into one" do
+    context "when requesting many stylesheets needing to be concatted into one" do
       setup do
         SinatraHelpers::Less.config do |config|
-          config.stylesheets = @the_stylesheets = ['one', 'two']
-          config.cache_name = @the_cache_name = 'all'
+          config.concat['all'] = ['one', 'two']
         end
         @all = File.open(File.join(app.root, SinatraHelpers::Less[:src_root], 'all_compiled.css')) do |file|
           file.read
@@ -114,9 +113,7 @@ class LessTest < Test::Unit::TestCase
         @response = visit "#{SinatraHelpers::Less[:hosted_root]}/all.css"
       end
       
-      should "return compiled LESS" do
-        assert_equal @the_stylesheets, SinatraHelpers::Less[:stylesheets]
-        assert_equal @the_cache_name, SinatraHelpers::Less[:cache_name]
+      should "return concatted LESS" do
         assert_equal @all.strip, @response.body.strip
       end
     end

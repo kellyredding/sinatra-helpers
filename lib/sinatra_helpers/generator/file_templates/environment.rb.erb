@@ -12,7 +12,4 @@ use Rack::Session::Cookie, :key => '_sess'
 use Rack::Flash
 
 # setup the LESS helper
-# => TODO: add less stylesheets to cache here
-SinatraHelpers::Less.stylesheets = ['reset', 'app']
-SinatraHelpers::Less.cache_name = 'web'
 Sinatra::Application.register SinatraHelpers::Less

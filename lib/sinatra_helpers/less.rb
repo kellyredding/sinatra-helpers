@@ -5,32 +5,14 @@ rescue LoadError => err
   raise err
 end
 
+require 'sinatra_helpers/less/config'
+require 'sinatra_helpers/less/erb'
+
 module SinatraHelpers; end
 module SinatraHelpers::Less
   
   CONTENT_TYPE = "text/css"
-  DEFAULT_CACHE_CONTROL = 'public, max-age=86400' # cache for 24 hours
   
-  class Config
-    ATTRIBUTES = [:hosted_root, :src_root, :stylesheets, :cache_name, :cache_control, :compression]
-    DEFAULTS = {
-      :hosted_root => '/stylesheets',
-      :src_root => 'app/stylesheets',
-      :cache_name => 'all',
-      :stylesheets => [],
-      :cache_control => DEFAULT_CACHE_CONTROL,
-      :compression => false
-    }
-
-    attr_accessor *ATTRIBUTES
-    
-    def initialize(args={})
-      ATTRIBUTES.each do |a|
-        instance_variable_set("@#{a}", args[a] || DEFAULTS[a])
-      end
-    end
-  end
-
   class << self
     attr_reader :app
     
@@ -47,6 +29,7 @@ module SinatraHelpers::Less
     end
   
     def registered(app)
+      app.helpers SinatraHelpers::Less::Erb
       instance_variable_set("@app", app)
 
       app.get "/less-sinatra-helper-test" do
@@ -75,8 +58,8 @@ module SinatraHelpers::Less
           SinatraHelpers::Less.compile(css_name, [less_path])
         elsif File.exists?(css_path)
           SinatraHelpers::Less.compile(css_name, [css_path])
-        elsif SinatraHelpers::Less[:cache_name] && css_name == SinatraHelpers::Less[:cache_name]
-          less_paths = SinatraHelpers::Less[:stylesheets].collect do |css_name|
+        elsif SinatraHelpers::Less[:concat].include?(css_name)
+          less_paths = SinatraHelpers::Less[:concat][css_name].collect do |css_name|
             File.join(app.root, SinatraHelpers::Less[:src_root], "#{css_name}.less")
           end.select do |less_path|
             File.exists?(less_path)

@@ -7,6 +7,7 @@ module SinatraHelpers
     :not_found => 404,
     :ok => 200
   }
+  DEFAULT_CACHE_CONTROL = 'public, max-age=86400' # cache for 24 hours
 
   class << self
     

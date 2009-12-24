@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex,nofollow" />
   <% end %>
   <link rel="icon" type="image/png" href="/favicon.png"></link>
-  <%= stylesheet_link_tag SinatraHelpers::Less.stylesheets, :cache => SinatraHelpers::Less.cache_name, :media => "all" %>
+  <%= less_link_tag 'reset', 'app', :media => "all", :concat => 'web' %>
 	<% unless @noscript %>
 	  <% #= sprockets_include_tag %>
   <% end %>
