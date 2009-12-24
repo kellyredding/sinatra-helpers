@@ -10,12 +10,9 @@ Gemsconfig::init do |config|
   config.gem 'rack-cache', :lib => false
     
   config.gem 'kelredd-useful', :lib => 'useful/ruby_extensions'
+
   config.gem 'kelredd-sinatra-helpers', :lib => 'sinatra_helpers'
-
-  config.gem 'less'
   config.gem 'kelredd-sinatra-helpers', :lib => 'sinatra_helpers/less'
-
-  #config.gem 'sprockets'
-  #config.gem 'kelredd-sprockets-sinatra', :lib => 'sprockets_sinatra'
+  config.gem 'kelredd-sinatra-helpers', :lib => 'sinatra_helpers/sprockets'
 
 end if defined?(Gemsconfig)

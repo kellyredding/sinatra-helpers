@@ -58,12 +58,15 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_files       'config/environments/test.rb'
       should_have_files       'config/environments/production.rb'
       should_have_files       'config/gems.rb'
-      should_have_files       'config/sprockets.yml'
 
       should_have_directories 'log'
 
       should_have_directories 'public'
       should_have_directories 'public/images'
+
+      should_have_directories 'script'
+      should_have_files 'script/server'
+      should_have_files 'script/console'
 
       should_have_directories 'test'
       should_have_directories 'test/functional'
