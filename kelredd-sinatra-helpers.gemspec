@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kelredd-sinatra-helpers}
-  s.version = "0.1.6"
+  s.version = "0.1.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kelly Redding"]
-  s.date = %q{2009-12-24}
+  s.date = %q{2009-12-28}
   s.default_executable = %q{sinatra}
   s.email = %q{kelly@kelredd.com}
   s.executables = ["sinatra"]
@@ -23,11 +23,11 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<kelredd-useful>, [">= 0.2.3"])
+      s.add_runtime_dependency(%q<kelredd-useful>, [">= 0.2.6"])
     else
-      s.add_dependency(%q<kelredd-useful>, [">= 0.2.3"])
+      s.add_dependency(%q<kelredd-useful>, [">= 0.2.6"])
     end
   else
-    s.add_dependency(%q<kelredd-useful>, [">= 0.2.3"])
+    s.add_dependency(%q<kelredd-useful>, [">= 0.2.6"])
   end
 end
