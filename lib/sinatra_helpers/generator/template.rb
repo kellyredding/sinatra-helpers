@@ -15,18 +15,19 @@ module SinatraHelpers::Generator
     },
     
     :app => {
-      :javascripts => {
-        'app.js.erb' => 'app.js'
-      },
+      :helpers => {},
       :models => {},
-      :stylesheets => {
-        'reset.less.erb' => 'reset.less',
-        'app.less.erb' => 'app.less'
-      },
       :views => {
         'layout' => 'layout.erb',
         'index.html.erb.erb' => 'index.html.erb'
       },
+      :javascripts => {
+        'app.js.erb' => 'app.js'
+      },
+      :stylesheets => {
+        'reset.less.erb' => 'reset.less',
+        'app.less.erb' => 'app.less'
+      }
     },
     
     :config => {
