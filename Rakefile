@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.files            = %w(README.rdoc Rakefile) + Dir.glob("{bin,lib}/**/*")
   s.executables    = ['sinatra']
   
-  s.add_dependency('kelredd-useful', '>= 0.2.3')
+  s.add_dependency('kelredd-useful', '>= 0.2.6')
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
