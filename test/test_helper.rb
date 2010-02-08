@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'test/unit'
 require 'shoulda/test_unit'
-require 'context'
 require 'useful/shoulda_macros/test_unit'
 require 'rack/test'
 require 'webrat'
