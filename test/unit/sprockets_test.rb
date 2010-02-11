@@ -1,4 +1,4 @@
-require 'test_helper'
+require "#{File.dirname(__FILE__)}/../test_helper"
 require 'fixtures/test_app'
 
 class SprocketsTest < Test::Unit::TestCase

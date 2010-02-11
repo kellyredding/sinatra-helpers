@@ -14,7 +14,7 @@ module SinatraHelpers::Sprockets
         [the_args, {}]
       end
       
-      options[:environment] ||= SinatraHelpers::Less.app.environment.to_s
+      options[:environment] ||= SinatraHelpers::Sprockets.app.environment.to_s
       
       javascript_include_tag srcs, options
     end
