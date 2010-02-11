@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex,nofollow" />
   <% end %>
   <link rel="icon" type="image/png" href="/favicon.png"></link>
-  <%= less_link_tag 'reset', 'app', :media => "all", :concat => 'web' %>
+  <%= spreadsheet_link_tag Rack::Less.combinations('web'), :media => "all" %>
 	<% unless @noscript %>
 	  <%= sprockets_include_tag 'app.js' %>
   <% end %>

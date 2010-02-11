@@ -33,8 +33,6 @@ class GeneratorTest < Test::Unit::TestCase
       
       should_have_directories 'admin'
       should_have_files       'admin/production.ru'
-      should_have_directories 'admin/vhosts'
-      should_have_directories 'admin/logrotate'
       
       should_have_directories 'app/helpers'
       should_have_directories 'app/models'
