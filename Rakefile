@@ -17,7 +17,12 @@ spec = Gem::Specification.new do |s|
   s.files            = %w(README.rdoc Rakefile) + Dir.glob("{bin,lib}/**/*")
   s.executables    = ['sinatra']
   
-  s.add_dependency('kelredd-useful', '>= 0.2.6')
+  s.add_dependency('kelredd-useful', ['>= 0.2.6'])
+  
+  s.add_development_dependency("shoulda", [">= 2.10.2"])
+  s.add_development_dependency("sinatra", [">= 0.9.4"])
+  s.add_development_dependency("rack-test", [">= 0.5.3"])
+  s.add_development_dependency("webrat", [">= 0.6.0"])
 end
 
 Rake::GemPackageTask.new(spec) do |pkg|
@@ -46,7 +51,6 @@ rescue LoadError
   warn "\n**** Install rcov (sudo gem install relevance-rcov) to get coverage stats ****\n"
   task :default => :test
 end
-
 
 desc 'Generate the gemspec to serve this gem'
 task :gemspec do

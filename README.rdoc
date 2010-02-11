@@ -10,8 +10,6 @@ I've written a generator for new Sinatra apps.  Please note: I've written this g
 
  * Most, if not all, of the helpers in this gem
  * Gem configuration (via gemsconfig: http://github.com/kelredd/gemsconfig)
- * Sprockets (via sprockets-sinatra: http://github.com/kelredd/sprockets-sinatra)
- * Less (coming)
  * Capistrano deployment scheme
  * Source control with Git
  * Erb (with generators from useful: http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/)
@@ -19,8 +17,9 @@ I've written a generator for new Sinatra apps.  Please note: I've written this g
  * Default layout that I like
  * Rack::Cache using my configuration (see admin/production.ru)
  * Rack::Flash
- * Unit testing with Test::Unit (coming)
- * BDD using Cucumber (coming)
+ * Rack::Less (http://github.com/kelredd/rack-less)
+ * Sprockets (via sprockets-sinatra: http://github.com/kelredd/sprockets-sinatra)
+ * Unit testing with Test::Unit
  
 If you don't like/want to use something that this generates, don't use the generator, or back out some generated code manually.  Ok, enough about that.  On to usage:
 
@@ -36,17 +35,13 @@ Have environment tests like development? and production? available in your app c
 Helpful view template helpers for partial rendering and html generation.  See
 http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/ for more info.
 
-=== Sprockets
-
-Coming.
-
 === ActiveRecord
 
 Coming.
 
 == Installation
 
-    sudo gem install kelredd-sinatra-helpers --source http://gemcutter.org
+    gem install kelredd-sinatra-helpers
 
 == Usage
 
@@ -54,7 +49,7 @@ Coming.
 
 == License
 
-Copyright (c) 2009 Kelly Redding
+Copyright (c) 2010 Kelly Redding
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
