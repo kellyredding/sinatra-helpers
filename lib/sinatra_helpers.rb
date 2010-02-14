@@ -3,11 +3,6 @@ require 'sinatra_helpers/erb'
 
 module SinatraHelpers
 
-  HTTP_STATUS = {
-    :not_found => 404,
-    :ok => 200
-  }
-
   class << self
     
     def page_cache?(app)
