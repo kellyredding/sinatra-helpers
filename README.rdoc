@@ -18,7 +18,7 @@ I've written a generator for new Sinatra apps.  Please note: I've written this g
  * Rack::Cache using my configuration (see admin/production.ru)
  * Rack::Flash
  * Rack::Less (http://github.com/kelredd/rack-less)
- * Sprockets (via sprockets-sinatra: http://github.com/kelredd/sprockets-sinatra)
+ * Rack::Sprockets (http://github.com/kelredd/rack-sprockets)
  * Unit testing with Test::Unit
  
 If you don't like/want to use something that this generates, don't use the generator, or back out some generated code manually.  Ok, enough about that.  On to usage:

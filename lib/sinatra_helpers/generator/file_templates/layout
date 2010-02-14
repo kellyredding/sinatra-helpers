@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="/favicon.png"></link>
   <%= spreadsheet_link_tag Rack::Less.combinations('web'), :media => "all" %>
 	<% unless @noscript %>
-	  <%= sprockets_include_tag 'app.js' %>
+	  <%= javascript_include_tag 'app.js' %>
   <% end %>
 </head>
 <body class="body">
