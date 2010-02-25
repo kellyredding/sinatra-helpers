@@ -1,4 +1,4 @@
-require 'fileutils'
+require 'ftools'
 require 'erb'
 require 'useful/ruby_extensions/string'
 
