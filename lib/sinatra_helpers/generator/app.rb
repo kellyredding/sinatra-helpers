@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'erb'
 require 'useful/ruby_extensions/string'
 
@@ -26,7 +27,7 @@ module SinatraHelpers::Generator
     private
     
     def build_template(root_path, dir_hash)
-      FileUtils.mkdir_p(root_path)
+      ::FileUtils.mkdir_p(root_path)
       dir_hash.each do |k, v|
         if v.kind_of?(::Hash)
           build_template(File.join(root_path,k.to_s), v)
