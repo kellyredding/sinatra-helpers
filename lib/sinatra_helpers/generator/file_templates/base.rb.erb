@@ -20,8 +20,3 @@ def load_app(files_dir)
 end
 
 require 'config/env'
-begin
-  require "config/envs/#{RACK_ENV.downcase}"
-rescue LoadError => err
-  puts "no environment config set up for '#{RACK_ENV.downcase}', ignoring..."
-end

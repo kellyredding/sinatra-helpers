@@ -29,11 +29,13 @@ class GeneratorTest < Test::Unit::TestCase
         SinatraHelpers::Generator::App.new(@root_path).generate
       end
       
-      should_have_files 'app.rb', 'Capfile', 'Rakefile', '.gitignore'
+      should_have_files 'app.rb', 'Capfile', 'Rakefile', '.gitignore', 'config.ru'
       
       should_have_directories 'admin'
       should_have_files       'admin/production.ru'
+      should_have_files       'admin/staging.ru'
       
+      should_have_files       'app/base.rb'
       should_have_directories 'app/helpers'
       should_have_directories 'app/models'
       should_have_directories 'app/views'
@@ -46,16 +48,11 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_files       'app/stylesheets/app.less'
     
       should_have_directories 'config'
-      should_have_files       'config/boot.rb'
       should_have_files       'config/deploy.rb'
       should_have_directories 'config/deploy'
       should_have_files       'config/deploy/production.rb'
       should_have_files       'config/deploy/staging.rb'
       should_have_files       'config/env.rb'
-      should_have_directories 'config/envs'
-      should_have_files       'config/envs/development.rb'
-      should_have_files       'config/envs/test.rb'
-      should_have_files       'config/envs/production.rb'
       should_have_files       'config/gems.rb'
 
       should_have_directories 'log'
@@ -75,7 +72,7 @@ class GeneratorTest < Test::Unit::TestCase
 
       context "when tested and done" do
         after do
-          FileUtils.rm_rf(@tmp_dir)
+          #FileUtils.rm_rf(@tmp_dir)
         end
         
         should "cleanup after itself" do

@@ -4,15 +4,18 @@ module SinatraHelpers::Generator
 
   TEMPLATE = {
     'app.rb.erb' => 'app.rb',
+    'config.ru.erb' => 'config.ru',
     'Capfile.erb' => 'Capfile',
     'Rakefile.erb' => 'Rakefile',
     'gitignore.erb' => '.gitignore',
     
     :admin => {
-      'production.ru.erb' => 'production.ru'
+      'production.ru.erb' => 'production.ru',
+      'staging.ru.erb' => 'staging.ru'
     },
     
     :app => {
+      'base.rb.erb' => 'base.rb',
       :helpers => {},
       :models => {},
       :views => {
@@ -29,18 +32,12 @@ module SinatraHelpers::Generator
     },
     
     :config => {
-      'boot.rb.erb' => 'boot.rb',
       'deploy.rb.erb' => 'deploy.rb',
       :deploy => {
         'deploy_production.rb.erb' => 'production.rb',
         'deploy_staging.rb.erb' => 'staging.rb'
       },
       'env.rb.erb' => 'env.rb',
-      :envs => {
-        'env_development.rb.erb' => 'development.rb',
-        'env_test.rb.erb' => 'test.rb',
-        'env_production.rb.erb' => 'production.rb'
-      },
       'gems.rb.erb' => 'gems.rb'
     },
     
