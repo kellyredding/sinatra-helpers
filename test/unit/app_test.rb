@@ -7,7 +7,7 @@ class LessTest < Test::Unit::TestCase
     @app ||= TestApp
   end
 
-  context "A SinatraHelpers::Less app" do
+  context "A SinatraHelpers app" do
     setup do
       app.set :environment, :development
     end
