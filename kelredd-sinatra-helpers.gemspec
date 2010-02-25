@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kelredd-sinatra-helpers}
-  s.version = "0.1.9"
+  s.version = "0.1.10"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kelly Redding"]
-  s.date = %q{2010-02-14}
+  s.date = %q{2010-02-25}
   s.default_executable = %q{sinatra}
   s.email = %q{kelly@kelredd.com}
   s.executables = ["sinatra"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/kelredd/sinatra-helpers}
   s.rdoc_options = ["--main", "README.rdoc"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{a ruby gem with a bunch of helpers to make Sinatra more useful}
 
   if s.respond_to? :specification_version then
