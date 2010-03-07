@@ -1,9 +1,0 @@
-#!/usr/bin/env ruby
-
-platform_ruby = RUBY_PLATFORM =~ /(:?mswin|mingw)/ ? 'ruby.bat' : 'ruby'
-
-require 'rubygems'
-require 'sinatra/base'
-
-puts "Loading default environment (Sinatra #{Sinatra::VERSION})"
-exec "#{platform_ruby} app.rb"
