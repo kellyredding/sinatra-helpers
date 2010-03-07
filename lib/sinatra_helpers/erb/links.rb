@@ -7,7 +7,7 @@ module SinatraHelpers::Erb; end
 
 module SinatraHelpers::Erb::Links
   
-  SINATRA_HELPERS_LINKS_TIMESTAMP = Time.now.to_i.to_s.freeze
+  SINATRA_HELPERS_LINKS_TMP_FILE = File.expand_path('./tmp/.sinatra_helpers_links')
   
   class << self
     
@@ -43,7 +43,10 @@ module SinatraHelpers::Erb::Links
   
   def sinatra_helpers_links_timestamp
     if defined?(:development?) && !development?
-      SINATRA_HELPERS_LINKS_TIMESTAMP
+      unless File.exists?(SINATRA_HELPERS_LINKS_TMP_FILE)
+        `touch #{SINATRA_HELPERS_LINKS_TMP_FILE}`
+      end
+      File.mtime(SINATRA_HELPERS_LINKS_TMP_FILE).to_i.to_s
     else
       Time.now.to_i.to_s
     end
