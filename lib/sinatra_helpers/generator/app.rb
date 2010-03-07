@@ -1,4 +1,4 @@
-require 'ftools'
+require 'fileutils'
 require 'erb'
 require 'useful/ruby_extensions/string'
 
@@ -17,7 +17,7 @@ module SinatraHelpers::Generator
     end
     
     def name=(name)
-      @name = name.gsub(/([A-Z])([a-z])/, '-\1\2').sub(/^-/, '').downcase
+      @name = name.gsub(/([A-Z])([a-z])/, '-\1\2').sub(/^-/, '').gsub(/\.\w*/, '').downcase
     end
     
     def generate

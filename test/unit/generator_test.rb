@@ -13,7 +13,9 @@ class GeneratorTest < Test::Unit::TestCase
     should "clean up bad app names" do
       {
         'app' => 'app', 'an-app' => 'an-app', 'an_app' => 'an_app',
-        'anApp' => 'an-app', 'AnApp' => 'an-app', 'ANAPP' => 'anapp'
+        'anApp' => 'an-app', 'AnApp' => 'an-app', 'ANAPP' => 'anapp',
+        'app.com' => 'app'
+        
       }.each do |k,v|
         assert_equal v, SinatraHelpers::Generator::App.new(File.join(@tmp_dir, k)).name
       end
