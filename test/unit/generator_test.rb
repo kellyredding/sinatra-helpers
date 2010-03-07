@@ -74,7 +74,7 @@ class GeneratorTest < Test::Unit::TestCase
 
       context "when tested and done" do
         after do
-          #FileUtils.rm_rf(@tmp_dir)
+          FileUtils.rm_rf(@tmp_dir)
         end
         
         should "cleanup after itself" do
