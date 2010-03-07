@@ -5,10 +5,12 @@ require 'useful/shoulda_macros/test_unit'
 require 'rack/test'
 require 'webrat'
 
+ROOT_DIR = File.expand_path("#{File.dirname(__FILE__)}/..")
+$LOAD_PATH.unshift(ROOT_DIR)
+$LOAD_PATH.unshift(File.join(ROOT_DIR, 'test'))
+
 RACK_ENV = "test"
 require 'app'
-
-$LOAD_PATH.unshift(File.dirname(__FILE__))
 
 class Test::Unit::TestCase
   include Rack::Test::Methods
@@ -18,5 +20,5 @@ class Test::Unit::TestCase
   Webrat.configure do |config|
     config.mode = :rack
   end
- 
+  
 end

@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+RACK_ENV = ENV['RACK_ENV'] ||= ARGV.first || 'development'
 platform_irb = RUBY_PLATFORM =~ /(:?mswin|mingw)/ ? 'irb.bat' : 'irb'
 
 require 'rubygems'

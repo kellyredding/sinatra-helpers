@@ -38,7 +38,16 @@ module SinatraHelpers::Generator
         'deploy_staging.rb.erb' => 'staging.rb'
       },
       'env.rb.erb' => 'env.rb',
-      'gems.rb.erb' => 'gems.rb'
+      :envs => {
+        'env_development.rb.erb' => 'development.rb',
+        'env_production.rb.erb' => 'production.rb',
+        'env_staging.rb.erb' => 'staging.rb',
+        'env_test.rb.erb' => 'test.rb'
+      },
+      'gems.rb.erb' => 'gems.rb',
+      :initializers => {
+        'init.rb.erb' => 'init.rb'
+      }
     },
     
     :log => {},
@@ -48,8 +57,7 @@ module SinatraHelpers::Generator
     },
     
     :script => {
-      'console.erb' => 'console',
-      'server.erb' => 'server'
+      'console.erb' => 'console'
     },
     
     :test => {
