@@ -1,4 +1,8 @@
-RACK_ENV = ENV["RACK_ENV"] ||= "development" unless defined? RACK_ENV
+if defined? RACK_ENV
+  ENV["RACK_ENV"] ||= RACK_ENV
+else
+  RACK_ENV = ENV["RACK_ENV"] ||= "development"
+end
 ROOT_DIR = File.expand_path("#{File.dirname(__FILE__)}/..") unless defined? ROOT_DIR
  
 def root_path(*args)
