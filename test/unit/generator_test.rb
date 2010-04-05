@@ -47,6 +47,7 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'app/javascripts'
       should_have_files       'app/javascripts/app.js'
       should_have_files       'app/stylesheets/reset.less'
+      should_have_files       'app/stylesheets/reset-fonts.less'
       should_have_files       'app/stylesheets/app.less'
     
       should_have_directories 'config'

@@ -27,6 +27,7 @@ module SinatraHelpers::Generator
       },
       :stylesheets => {
         'reset.less.erb' => 'reset.less',
+        'reset-fonts.less.erb' => 'reset-fonts.less',
         'app.less.erb' => 'app.less'
       }
     },
