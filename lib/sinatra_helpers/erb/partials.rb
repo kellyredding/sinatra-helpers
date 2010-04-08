@@ -57,7 +57,8 @@ module SinatraHelpers::Erb::Partials
   def partial(path, locals={}, &subject_block)
     raise "locals must be specified with a Hash" unless locals.kind_of?(::Hash)
     params = _partial_params(path, locals, subject_block)
-    if params[:subject] && params[:subject].respond_to?(:collect)
+    # locals[:object] takes precedence over whatever calculated subject
+    if locals.delete(:object).nil? && params[:subject] && params[:subject].respond_to?(:collect)
       counter = 0
       params[:subject].collect do |subject|
         erb(params[:path], params[:options].merge({
@@ -87,7 +88,7 @@ module SinatraHelpers::Erb::Partials
         nil
       end ||
       locals.delete(:collection) ||
-      locals.delete(:object) ||
+      locals[:object] ||   # don't remove it from the locals hash just yet
       locals.delete(name),
       :locals => locals.delete(:locals) || locals,
       :options => { :layout => false },
