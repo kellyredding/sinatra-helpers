@@ -89,6 +89,7 @@ module SinatraHelpers::Erb::Partials
       end ||
       locals.delete(:collection) ||
       locals[:object] ||   # don't remove it from the locals hash just yet
+      (locals[:locals] || locals).delete(name) ||
       locals.delete(name),
       :locals => locals.delete(:locals) || locals,
       :options => { :layout => false },
