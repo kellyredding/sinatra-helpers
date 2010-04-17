@@ -1,7 +1,6 @@
 require 'sinatra/base'
 
 module SinatraHelpers; end
-
 module SinatraHelpers::EnvironmentTests
     
   def production? 
