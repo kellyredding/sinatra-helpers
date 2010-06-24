@@ -64,6 +64,10 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'config/initializers'
       should_have_files       'config/initializers/init.rb'
 
+      should_have_directories 'lib'
+      should_have_directories 'lib/tasks'
+      should_have_files 'lib/tasks/environment.rake'
+
       should_have_directories 'log'
 
       should_have_directories 'public'

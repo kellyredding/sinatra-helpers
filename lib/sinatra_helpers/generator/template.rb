@@ -51,6 +51,12 @@ module SinatraHelpers::Generator
       }
     },
     
+    :lib => {
+      :tasks => {
+        'environment.rake.erb' => 'environment.rake'
+      }
+    },
+    
     :log => {},
     
     :public => {

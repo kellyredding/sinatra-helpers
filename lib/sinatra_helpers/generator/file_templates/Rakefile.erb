@@ -1,6 +1,12 @@
 require 'rubygems'
 require 'rake/testtask'
 
+$LOAD_PATH.unshift(File.expand_path("#{File.dirname(__FILE__)}"))
+
+Dir[File.expand_path('../lib/tasks/*.rake', __FILE__)].each do |file|
+  load file
+end
+
 namespace :test do
 
   Rake::TestTask.new(:units) do |t|
