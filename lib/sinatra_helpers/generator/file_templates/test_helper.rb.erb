@@ -5,7 +5,7 @@ require 'useful/shoulda_macros/test_unit'
 require 'rack/test'
 require 'webrat'
 
-RACK_ENV = "test"
+ENV["RACK_ENV"] = "test"
 ROOT_DIR = File.expand_path("#{File.dirname(__FILE__)}/..")
 
 $LOAD_PATH.unshift(ROOT_DIR)

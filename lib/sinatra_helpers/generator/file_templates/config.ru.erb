@@ -1,4 +1,4 @@
-ENV["RACK_ENV"] ||= "development" unless defined? RACK_ENV
+ENV["RACK_ENV"] ||= "development"
 require 'app'
 set :app_file, File.join(root_path, 'app.rb')
 disable :run
