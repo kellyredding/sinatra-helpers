@@ -11,7 +11,7 @@
     <meta name="robots" content="noindex,nofollow" />
   <% end %>
   <link rel="icon" type="image/png" href="/favicon.png"></link>
-  <%= stylesheet_link_tag Rack::Less.combinations('web'), :media => "all" %>
+  <%= stylesheet_link_tag Rack::Less.stylesheet('web'), :media => "all" %>
 	<% unless @noscript %>
 	  <%= javascript_include_tag 'app.js' %>
   <% end %>
