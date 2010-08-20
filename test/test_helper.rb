@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'test/unit'
 require 'shoulda'
+require 'leftright'
 require 'useful/shoulda_macros/test_unit'
 require 'rack/test'
 require 'webrat'
