@@ -1,5 +1,9 @@
 require 'rubygems'
 require 'sinatra'
+
+require 'config/gems'
+Gemsconfig::load if defined?(Gemsconfig)
+
 require 'app/base'
 
 # define routes here or load in route definitions

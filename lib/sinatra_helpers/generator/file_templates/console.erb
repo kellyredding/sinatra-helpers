@@ -1,11 +1,10 @@
 #!/usr/bin/env ruby
 
-ENV['RACK_ENV'] ||= (ARGV.first || 'development')
+RACK_ENV = ENV['RACK_ENV'] = (ARGV.first || 'development')
 platform_irb = RUBY_PLATFORM =~ /(:?mswin|mingw)/ ? 'irb.bat' : 'irb'
 
 require 'rubygems'
-require 'sinatra/base'
 libs =  " -r app"
 
-puts "Loading default environment (Sinatra #{Sinatra::VERSION})"
+puts "Loading #{RACK_ENV} environment (Sinatra)"
 exec "#{platform_irb} #{libs} --simple-prompt"
