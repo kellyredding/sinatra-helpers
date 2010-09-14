@@ -39,9 +39,10 @@ module SinatraHelpers::Generator
         'deploy_staging.rb.erb' => 'staging.rb'
       },
       'env.rb.erb' => 'env.rb',
-      'gems.rb.erb' => 'gems.rb',
       'init.rb.erb' => 'init.rb'
     },
+
+    'Gemfile.erb' => 'Gemfile',
 
     :lib => {
       :tasks => {

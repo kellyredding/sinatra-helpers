@@ -1,8 +1,9 @@
 require 'rubygems'
-require 'sinatra'
+require 'bundler'
+Bundler.setup
 
-require 'config/gems'
-Gemsconfig::load if defined?(Gemsconfig)
+require 'sinatra'
+Bundler.require(:default)
 
 require 'app/base'
 

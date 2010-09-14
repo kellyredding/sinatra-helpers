@@ -56,12 +56,13 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_files       'config/deploy/production.rb'
       should_have_files       'config/deploy/staging.rb'
       should_have_files       'config/env.rb'
-      should_have_files       'config/gems.rb'
       should_have_files       'config/init.rb'
+
+      should_have_files       'Gemfile'
 
       should_have_directories 'lib'
       should_have_directories 'lib/tasks'
-      should_have_files 'lib/tasks/environment.rake'
+      should_have_files       'lib/tasks/environment.rake'
 
       should_have_directories 'log'
 
@@ -69,7 +70,7 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_directories 'public/images'
 
       should_have_directories 'script'
-      should_have_files 'script/console'
+      should_have_files       'script/console'
 
       should_have_directories 'test'
       should_have_files       'test/helper.rb'
