@@ -60,7 +60,7 @@ module SinatraHelpers::Generator
     },
 
     :test => {
-      'test_helper.rb.erb' => 'test_helper.rb',
+      'test_helper.rb.erb' => 'helper.rb',
       :functional => {
         'layout_test.rb.erb' => 'layout_test.rb'
       },

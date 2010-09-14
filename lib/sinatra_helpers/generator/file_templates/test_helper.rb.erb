@@ -1,10 +1,3 @@
-require 'rubygems'
-require 'test/unit'
-require 'shoulda/test_unit'
-require 'useful/shoulda_macros/test_unit'
-require 'rack/test'
-require 'webrat'
-
 ENV["RACK_ENV"] = "test"
 ROOT_DIR = File.expand_path("#{File.dirname(__FILE__)}/..")
 
@@ -13,13 +6,21 @@ $LOAD_PATH.unshift(File.join(ROOT_DIR, 'test'))
 
 require 'app'
 
+require 'rubygems'
+require 'test/unit'
+require 'shoulda'
+require 'useful/shoulda_macros/test_unit'
+require 'leftright'
+require 'rack/test'
+require 'webrat'
+
 class Test::Unit::TestCase
   include Rack::Test::Methods
   include Webrat::Methods
   include Webrat::Matchers
- 
+
   Webrat.configure do |config|
     config.mode = :rack
   end
-  
+
 end

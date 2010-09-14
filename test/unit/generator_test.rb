@@ -72,7 +72,7 @@ class GeneratorTest < Test::Unit::TestCase
       should_have_files 'script/console'
 
       should_have_directories 'test'
-      should_have_files       'test/test_helper.rb'
+      should_have_files       'test/helper.rb'
       should_have_directories 'test/functional'
       should_have_files       'test/functional/layout_test.rb'
       should_have_directories 'test/unit'
