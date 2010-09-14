@@ -9,3 +9,10 @@ gem 'rack-sprockets', :require => "rack/sprockets"
 
 gem 'kelredd-useful',              :require => "useful/ruby_extensions"
 gem 'kelredd-sinatra-helpers',     :require => "sinatra_helpers"
+
+group :test do
+  gem 'rack-test', "~>0.5", :require => "rack/test"
+  gem 'shoulda', "~>2.11"
+  gem 'leftright'
+  gem 'webrat', "~>0.7"
+end

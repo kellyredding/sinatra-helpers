@@ -1,4 +1,4 @@
-require 'test_helper'
+require 'test/helper'
 
 class LayoutTest < Test::Unit::TestCase
 
@@ -7,19 +7,19 @@ class LayoutTest < Test::Unit::TestCase
   end
 
   context "The app's layout" do
-  
-    before do
+
+    setup do
       visit '/'
     end
 
 
     # TODO: write better tests...
     # => this is just for show :)
-    
+
     should "say hello" do
       assert_contain "Hello from <%= @class_name %>!"
     end
-    
+
   end
 
 end
