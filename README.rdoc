@@ -4,12 +4,20 @@
 
 This is a ruby gem with a bunch of helpers to make Sinatra more useful.
 
+== Installation
+
+    gem install kelredd-sinatra-helpers
+
+== Usage
+
+    require 'sinatra_helpers'
+
 === A Generator
 
 I've written a generator for new Sinatra apps.  Please note: I've written this generator suited for my needs and paradigms in writing Sinatra apps.  It is written for me and comes AS IS.  Use if you wish, but know that it conforms to what I like using in Sinatra apps, including:
 
  * Most, if not all, of the helpers in this gem
- * Gem configuration (via gemsconfig: http://github.com/kelredd/gemsconfig)
+ * Bundler for gem configurations
  * Capistrano deployment scheme
  * Source control with Git
  * Erb (with generators from useful: http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/)
@@ -20,7 +28,8 @@ I've written a generator for new Sinatra apps.  Please note: I've written this g
  * Rack::Less (http://github.com/kelredd/rack-less)
  * Rack::Sprockets (http://github.com/kelredd/rack-sprockets)
  * Unit testing with Test::Unit
- 
+ * Test suite using leftright, rack-test, webrat, etc...
+
 If you don't like/want to use something that this generates, don't use the generator, or back out some generated code manually.  Ok, enough about that.  On to usage:
 
     $ sinatra path/to/app
@@ -37,15 +46,21 @@ http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/ for more in
 
 === ActiveRecord
 
-Coming.
+Provides a Rails like way for configuring an activerecord database.  Here's the steps to set it up:
 
-== Installation
+1. Configure this gem in your bundle
 
-    gem install kelredd-sinatra-helpers
+    gem 'kelredd-sinatra-helpers', :require => "sinatra_helpers"
 
-== Usage
+2. Configure active record in your bundle
 
-    require 'sinatra_helpers'
+    gem 'activerecord'
+
+3. Create your db config yaml file at 'config/database.yml'
+
+4. Somewhere in your app initialization script, do
+
+    require 'sinatra_helpers/active_record'
 
 == License
 
