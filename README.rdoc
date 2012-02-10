@@ -20,7 +20,7 @@ I've written a generator for new Sinatra apps.  Please note: I've written this g
  * Bundler for gem configurations
  * Capistrano deployment scheme
  * Source control with Git
- * Erb (with generators from useful: http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/)
+ * Erb (with generators from useful: http://github.com/kellyredding/useful/tree/master/lib/useful/erb_helpers/)
  * an App directory structure similar to Rails'
  * Default layout that I like
  * Rack::Cache using my configuration (see admin/production.ru)
@@ -42,7 +42,7 @@ Have environment tests like development? and production? available in your app c
 === Erb Helpers
 
 Helpful view template helpers for partial rendering and html generation.  See
-http://github.com/kelredd/useful/tree/master/lib/useful/erb_helpers/ for more info.
+http://github.com/kellyredding/useful/tree/master/lib/useful/erb_helpers/ for more info.
 
 === ActiveRecord
 
